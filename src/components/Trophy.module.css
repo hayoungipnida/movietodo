@@ -1,0 +1,41 @@
+.popupWrapper {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  animation: popUpAnim 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.popupWrapper .trophyImage {
+  width: 120px;
+}
+
+/* 선반 안착 모드 (해당 ShelfRow 내부 배치) */
+.placedWrapper {
+  display: flex;
+  align-items: flex-end;
+  margin-left: 20px;
+  animation: fadeIn 1s ease-in;
+}
+
+.placedWrapper .trophyImage {
+  width: 60px;
+}
+
+/* 이미지 공통 */
+.trophyImage {
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  transition: transform 0.3s;
+}
+
+@keyframes popUpAnim {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  60% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

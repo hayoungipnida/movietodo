@@ -1,0 +1,157 @@
+.row {
+  height: 186px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.row:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.genreLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 6px 4px 8px;
+  flex-shrink: 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.shelf {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.tapeRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 0 4px 4px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.tapeRow::-webkit-scrollbar { display: none; }
+
+.shelfBoard { display: none; }
+
+.emptySlot {
+  width: 33px;
+  height: 165px;
+  flex-shrink: 0;
+  border: 1px dashed rgba(180, 140, 90, 0.1);
+  border-radius: 2px;
+}
+
+.addButton {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.addButton:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.popupOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trophyPopup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.congratsText {
+  color: #FFD700;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+  animation: fadeIn 0.8s ease-in;
+}
+
+.trophyPopup img {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+}
+
+.placedSlot {
+  margin-left: 20px;
+  display: flex;
+  align-items: flex-end;
+  animation: slideAndFadeIn 0.8s ease-out forwards;
+}
+
+.placedSlot img {
+  width: 60px;
+  height: auto;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideAndFadeIn {
+  0% { transform: translateX(50px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.addTapeButton {
+  width: 33px;
+  height: 165px;
+  flex-shrink: 0;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 4px;
+}
+
+.addTapeButton:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.editBtn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  color: rgba(255,255,255,0.5);
+  font-size: 10px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+.editBtn:hover { color: #fff; border-color: #fff; }
