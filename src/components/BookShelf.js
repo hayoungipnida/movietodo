@@ -4,14 +4,24 @@ import ShelfRow from './ShelfRow';
 import TapeInsertModal from './TapeInsertModal';
 
 export default function BookShelf({ data: initialData, onAddGenre, onEditGenre, onDetailTape }) {
-  const [genres, setGenres] = useState(initialData);
+  const [genres, setGenres] = useState(() => {
+    const saved = localStorage.getItem('movieData');
+    return saved ? JSON.parse(saved) : initialData;
+  });
+  
   const [modal, setModal] = useState(null);
+
 
   useEffect(() => {
     if (initialData && initialData.length > 0) {
       setGenres(initialData);
     }
   }, [initialData]);
+
+
+  useEffect(() => {
+    localStorage.setItem('movieData', JSON.stringify(genres));
+  }, [genres]);
 
   const handleComplete = useCallback((genreId, tapeId) => {
     setGenres(prevGenres => {
@@ -55,7 +65,7 @@ export default function BookShelf({ data: initialData, onAddGenre, onEditGenre, 
             onComplete={(tapeId) => handleComplete(genre.id, tapeId)}
             onEmptyClick={genre.id === 'empty' ? onAddGenre : undefined}
             onEditClick={() => onEditGenre?.(genre)}
-            onDetailTape={onDetailTape} // 상세 모달 호출 함수 전달
+            onDetailTape={onDetailTape} 
           />
         ))}
       </div>

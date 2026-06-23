@@ -49,7 +49,7 @@ export default function ShelfRow({ genre, onComplete, onEmptyClick, onEditClick,
               key={tape.id}
               {...tape}
               onClick={() => onComplete?.(tape.id)}
-              onDetail={() => onDetailTape?.(tape)} // 상세 모달 연결
+              onDetail={() => onDetailTape?.(tape)}
             />
           ))}
           {isAllCleared && !showPopup && (
